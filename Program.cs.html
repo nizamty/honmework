@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Program.cs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d0d0d0;}
+.s1 { color: #bdbdbd;}
+.s2 { color: #6c95eb;}
+.s3 { color: #ed94c0;}
+.s4 { color: #c9a26d;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Program.cs</font>
+</center></td></tr></table>
+<pre>
+<span class="s1">{</span>
+    <span class="s0">Random random </span><span class="s1">= </span><span class="s2">new </span><span class="s0">Random</span><span class="s1">();</span>
+    <span class="s2">bool </span><span class="s0">playAgain</span><span class="s1">;</span>
+
+    <span class="s2">do</span>
+    <span class="s1">{</span>
+        <span class="s2">int </span><span class="s0">secretNumber </span><span class="s1">= </span><span class="s0">random</span><span class="s1">.</span><span class="s0">Next</span><span class="s1">(</span><span class="s3">1</span><span class="s1">, </span><span class="s3">101</span><span class="s1">);</span>
+        <span class="s2">int </span><span class="s0">maxAttempts </span><span class="s1">= </span><span class="s3">10</span><span class="s1">;</span>
+        <span class="s2">int </span><span class="s0">attempts </span><span class="s1">= </span><span class="s3">0</span><span class="s1">;</span>
+        <span class="s2">bool </span><span class="s0">hasGuessed </span><span class="s1">= </span><span class="s2">false</span><span class="s1">;</span>
+
+        <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">$&quot;Добро пожаловать в игру 'Угадай число'!У вас есть </span><span class="s1">{</span><span class="s0">maxAttempts</span><span class="s1">} </span><span class="s4">попыток, чтобы угадать число от 1 до 100.&quot;</span><span class="s1">);</span>
+
+        <span class="s2">while </span><span class="s1">(</span><span class="s0">attempts </span><span class="s1">&lt; </span><span class="s0">maxAttempts </span><span class="s1">&amp;&amp; </span><span class="s0">!hasGuessed</span><span class="s1">)</span>
+        <span class="s1">{</span>
+            <span class="s0">Console</span><span class="s1">.</span><span class="s0">Write</span><span class="s1">(</span><span class="s4">&quot;Введите ваше предположение: &quot;</span><span class="s1">);</span>
+            <span class="s2">string </span><span class="s0">input </span><span class="s1">= </span><span class="s0">Console</span><span class="s1">.</span><span class="s0">ReadLine</span><span class="s1">();</span>
+
+            <span class="s2">if </span><span class="s1">(</span><span class="s2">int</span><span class="s1">.</span><span class="s0">TryParse</span><span class="s1">(</span><span class="s0">input</span><span class="s1">, </span><span class="s2">out int </span><span class="s0">userGuess</span><span class="s1">))</span>
+            <span class="s1">{</span>
+                <span class="s0">attempts</span><span class="s1">++;</span>
+
+                <span class="s2">if </span><span class="s1">(</span><span class="s0">userGuess </span><span class="s1">== </span><span class="s0">secretNumber</span><span class="s1">)</span>
+                <span class="s1">{</span>
+                    <span class="s0">hasGuessed </span><span class="s1">= </span><span class="s2">true</span><span class="s1">;</span>
+                    <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">&quot;Поздравляем! Вы угадали число!&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+                <span class="s2">else if </span><span class="s1">(</span><span class="s0">userGuess </span><span class="s1">&lt; </span><span class="s0">secretNumber</span><span class="s1">)</span>
+                <span class="s1">{</span>
+                    <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">&quot;Загаданное число больше.&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+                <span class="s2">else</span>
+                <span class="s1">{</span>
+                    <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">&quot;Загаданное число меньше.&quot;</span><span class="s1">);</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+            <span class="s2">else</span>
+            <span class="s1">{</span>
+                <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">&quot;Пожалуйста, введите корректное число.&quot;</span><span class="s1">);</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+
+        <span class="s2">if </span><span class="s1">(</span><span class="s0">!hasGuessed</span><span class="s1">)</span>
+        <span class="s1">{</span>
+            <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">$&quot;Вы проиграли! Загаданное число было </span><span class="s1">{</span><span class="s0">secretNumber</span><span class="s1">}</span><span class="s4">.&quot;</span><span class="s1">);</span>
+        <span class="s1">}</span>
+
+        <span class="s0">Console</span><span class="s1">.</span><span class="s0">Write</span><span class="s1">(</span><span class="s4">&quot;Хотите сыграть еще раз? (да/нет): &quot;</span><span class="s1">);</span>
+        <span class="s2">string </span><span class="s0">response </span><span class="s1">= </span><span class="s0">Console</span><span class="s1">.</span><span class="s0">ReadLine</span><span class="s1">().</span><span class="s0">ToLower</span><span class="s1">();</span>
+        <span class="s0">playAgain </span><span class="s1">= </span><span class="s0">response </span><span class="s1">== </span><span class="s4">&quot;да&quot; </span><span class="s1">|| </span><span class="s0">response </span><span class="s1">== </span><span class="s4">&quot;yes&quot;</span><span class="s1">;</span>
+
+    <span class="s1">} </span><span class="s2">while </span><span class="s1">(</span><span class="s0">playAgain</span><span class="s1">);</span>
+
+    <span class="s0">Console</span><span class="s1">.</span><span class="s0">WriteLine</span><span class="s1">(</span><span class="s4">&quot;Спасибо за игру! Нажмите Enter для выхода.&quot;</span><span class="s1">);</span>
+    <span class="s0">Console</span><span class="s1">.</span><span class="s0">ReadLine</span><span class="s1">();</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
